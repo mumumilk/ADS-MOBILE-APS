@@ -1,3 +1,4 @@
+import { Login } from './../pages/login/login';
 import { FirebaseProvider } from './../providers/firebase-provider';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
