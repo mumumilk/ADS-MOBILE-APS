@@ -1,3 +1,4 @@
+import { ModalDisciplina } from './../pages/modal-disciplina/modal-disciplina';
 import { Login } from './../pages/login/login';
 import { FirebaseProvider } from './../providers/firebase-provider';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,7 +13,8 @@ import { HomePage } from '../pages/home/home';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ModalDisciplina
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ModalDisciplina
   ],
   providers: [
     StatusBar,

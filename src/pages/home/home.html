@@ -13,4 +13,12 @@
 
 <ion-content padding>
   <p *ngIf="usuario">Olá, {{ usuario.email }}!</p>
+  <ion-list>
+    <ion-item *ngFor="let disciplina of disciplinas">
+    <button ion-button (click)="abrirModalDisciplina(disciplina)">
+      {{ disciplina.nome }}
+    </button>
+    </ion-item>
+  </ion-list>
+  <button ion-button block (click)="abrirModalNovaDisciplina()">Nova disciplina</button>
 </ion-content>
