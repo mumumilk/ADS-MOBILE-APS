@@ -1,6 +1,6 @@
 import { FirebaseProvider } from './../../providers/firebase-provider';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -12,7 +12,7 @@ export class Login {
   public email: string;
   public senha: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebase: FirebaseProvider) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebase: FirebaseProvider, public alertCtrl: AlertController) { 
     this.email = '';
     this.senha = '';
   }
@@ -22,7 +22,7 @@ export class Login {
       this.firebase.auth().signInWithEmailAndPassword(this.email, this.senha)
         .catch(data => { console.error("Um erro ocorreu! " + data.message) });
     } else {
-      console.error('Todos os campos são obrigatórios!');
+      this.mostrarErro('É necessário preencher todos os campos para efetuar o login!');    
     }
     
   }
@@ -30,15 +30,27 @@ export class Login {
   registrar() {
     if(this.camposValidos()) {
       this.firebase.auth().createUserWithEmailAndPassword(this.email, this.senha)
-        .catch(data => { console.error("Um erro ocorreu! " + data.message) }); 
+        .catch(data => {
+          this.mostrarErro(data.message);
+        }); 
     } else {
-      console.error('Todos os campos são obrigatórios!');      
+      this.mostrarErro('É necessário preencher todos os campos para registrar!');    
     }
        
   }
 
   camposValidos() {
     return this.email.length > 0 && this.senha.length > 0;
+  }
+
+  mostrarErro(mensagem: string) {
+    let alert = this.alertCtrl.create({
+      title: 'Erro!',
+      subTitle: mensagem,
+      buttons: ['ok']
+    });
+
+    alert.present();
   }
 
 }
