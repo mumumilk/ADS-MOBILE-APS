@@ -12,7 +12,7 @@ export class Login {
   public email: string;
   public senha: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebase: FirebaseProvider, public alertCtrl: AlertController) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebase: FirebaseProvider, public alertCtrl: AlertController) {
     this.email = '';
     this.senha = '';
   }
@@ -22,9 +22,9 @@ export class Login {
       this.firebase.auth().signInWithEmailAndPassword(this.email, this.senha)
         .catch(data => { console.error("Um erro ocorreu! " + data.message) });
     } else {
-      this.mostrarErro('É necessário preencher todos os campos para efetuar o login!');    
+      this.mostrarErro('É necessário preencher todos os campos para efetuar o login!');
     }
-    
+
   }
 
   registrar() {
@@ -32,11 +32,11 @@ export class Login {
       this.firebase.auth().createUserWithEmailAndPassword(this.email, this.senha)
         .catch(data => {
           this.mostrarErro(data.message);
-        }); 
+        });
     } else {
-      this.mostrarErro('É necessário preencher todos os campos para registrar!');    
+      this.mostrarErro('É necessário preencher todos os campos para registrar!');
     }
-       
+
   }
 
   camposValidos() {
