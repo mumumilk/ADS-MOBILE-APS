@@ -8,10 +8,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 
+import { Menu } from '../pages/menu/menu';
+
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    Menu
   ],
   imports: [
     BrowserModule,
@@ -19,7 +22,8 @@ import { MyApp } from './app.component';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    Menu
   ],
   providers: [
     StatusBar,

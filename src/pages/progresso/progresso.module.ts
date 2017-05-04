@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { Menu } from './menu';
-
+import { Progresso } from './progresso';
 
 @NgModule({
   declarations: [
-    Menu
+    Progresso,
   ],
   imports: [
-    IonicPageModule.forChild(Menu),
+    IonicPageModule.forChild(Progresso),
   ],
   exports: [
-    Menu
+    Progresso
   ]
 })
-export class MenuModule {}
+export class ProgressoModule {}

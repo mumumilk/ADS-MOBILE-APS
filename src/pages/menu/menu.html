@@ -1,23 +1,27 @@
 <ion-menu [content]="pages">
 
     <ion-header>
-        <ion-navbar color="dark">
-            <ion-title>
-                Menu
-            </ion-title>
+        <ion-navbar color="menu" >
+          <span style="display: flex; width: 100%">
+            <p style="color: #f4f4f4">{{usuario.email}}</p>
+            <button right icon-only (click)="sair()" style="background-color: transparent;">
+                <ion-icon name="power" color="danger" center></ion-icon>
+            </button>
+          </span>
         </ion-navbar>
     </ion-header>
 
   <ion-content block>
     <ion-list>
-        <button menuClose ion-item (click)="abrirPagina(Disciplinas)">
-          Disciplinas
-        </button>
-        <button menuClose ion-item (click)="abrirPagina(Progresso)">
-          Progresso
-        </button>
+      <button menuClose ion-item (click)="abrirPagina('Disciplinas')">
+        Disciplinas
+      </button>
+      <button menuClose ion-item (click)="abrirPagina('Progresso')">
+        Progresso
+      </button>
     </ion-list>
   </ion-content>
+
 
 </ion-menu>
 
