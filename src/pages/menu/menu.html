@@ -1,0 +1,24 @@
+<ion-menu [content]="pages">
+
+    <ion-header>
+        <ion-navbar color="dark">
+            <ion-title>
+                Menu
+            </ion-title>
+        </ion-navbar>
+    </ion-header>
+
+  <ion-content block>
+    <ion-list>
+        <button menuClose ion-item (click)="abrirPagina(Disciplinas)">
+          Disciplinas
+        </button>
+        <button menuClose ion-item (click)="abrirPagina(Progresso)">
+          Progresso
+        </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav #pages [root]="paginaAtual"></ion-nav>

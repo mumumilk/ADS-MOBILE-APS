@@ -1,4 +1,3 @@
-import { ModalDisciplina } from './../pages/modal-disciplina/modal-disciplina';
 import { Login } from './../pages/login/login';
 import { FirebaseProvider } from './../providers/firebase-provider';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,13 +7,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
-    ModalDisciplina
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -22,9 +19,7 @@ import { HomePage } from '../pages/home/home';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
-    ModalDisciplina
+    MyApp
   ],
   providers: [
     StatusBar,

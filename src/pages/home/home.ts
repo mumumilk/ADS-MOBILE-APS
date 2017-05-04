@@ -9,10 +9,10 @@ import { NavController, ModalController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  
+
   public usuario: firebase.User;
   public disciplinas: Array<Disciplina>;
-  
+
   constructor(public navCtrl: NavController, public firebase: FirebaseProvider,  public modalCtrl: ModalController) {
     this.usuario = this.firebase.auth().currentUser;
     this.disciplinas = new Array<Disciplina>();
@@ -23,8 +23,8 @@ export class HomePage {
   }
 
   abrirModalNovaDisciplina() {
-    let modal = this.modalCtrl.create(ModalDisciplina, {adicionando: true});
-    modal.present();
+    this.navCtrl.push('Disciplinas');
+
   }
 
   abrirModalDisciplina(disciplina: Disciplina) {
