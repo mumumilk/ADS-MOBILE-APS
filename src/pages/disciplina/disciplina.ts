@@ -1,5 +1,4 @@
-import { Documento } from './../../models/Documento';
-import { Atividade } from './../../models/Atividade';
+import { Disciplina } from './../../models/Disciplina';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -8,18 +7,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-disciplina',
   templateUrl: 'disciplina.html',
 })
-export class Disciplina {
+export class DisciplinaPage {
   
   public tabAtividades: any;
   public tabDocumentos: any;
   public disciplina: Disciplina;
-  public atividades: Array<Atividade>;
-  public documentos: Array<Documento>;
+  public dadosAbaAtividades: any;
+  public dadosAbaDocumentos: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.disciplina = this.navParams.get('disciplina');
-    this.atividades = this.disciplina.atividades;
-    this.documentos = this.disciplina.documentos;
+    
+    this.dadosAbaAtividades = { 
+      atividades: this.disciplina.atividades,
+      nomeDisciplina: this.disciplina.nome  
+    };
+
+    this.dadosAbaDocumentos = { 
+      documentos: this.disciplina.documentos,
+      nomeDisciplina: this.disciplina.nome 
+    };
+    
     this.tabAtividades = 'Atividades';
     this.tabDocumentos = 'Documentos';
   }

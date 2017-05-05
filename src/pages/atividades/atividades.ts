@@ -17,13 +17,11 @@ export class Atividades {
   }
 
   ionViewDidLoad() {
-    let params = this.navParams.data;
+    let params = this.navParams.data as { atividades, nomeDisciplina };
 
     if (params) {
-      this.atividades = this.navParams.data;
-      try {
-        this.nomeDisciplina = this.atividades[0].nomeDisciplina;
-      } catch(e) { console.log('rato') }    
+      this.atividades = this.navParams.data.atividades;
+      this.nomeDisciplina = params.nomeDisciplina;   
     }
   }
 

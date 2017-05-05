@@ -25,7 +25,7 @@ export class Menu {
       title: 'Atenção!',
       subTitle: 'Deseja efetuar logout?',
       buttons: [{
-        text: 'Cancelar',
+        text: 'Não',
         role: 'cancel'
       }, {
         text: 'Sim',

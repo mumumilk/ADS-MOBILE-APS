@@ -17,7 +17,7 @@ export class Disciplinas {
   }
 
   abrirDisciplina(disciplina: Disciplina) {
-    this.navCtrl.push('Disciplina', {
+    this.navCtrl.push('DisciplinaPage', {
       disciplina: disciplina
     });
   }
@@ -47,7 +47,7 @@ export class Disciplinas {
   criarDisciplina(nomeDisciplina: string) {
     try {
       let novaDisciplina = new Disciplina(nomeDisciplina);
-      
+
       // let testeAtividades = new Array<Atividade>();
       // let testeDocumentos = new Array<Documento>();
 
