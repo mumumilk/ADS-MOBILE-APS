@@ -7,12 +7,12 @@ export class FirebaseProvider {
 
 	constructor() {
 		let config = {
-            apiKey: "AIzaSyBNS6tzYKUMF-8MCrE8v9e0W7USgqKdS2E",
-            authDomain: "aps01-cb66a.firebaseapp.com",
-            databaseURL: "https://aps01-cb66a.firebaseio.com",
-            projectId: "aps01-cb66a",
-            storageBucket: "aps01-cb66a.appspot.com",
-            messagingSenderId: "495910324562"
+			apiKey: "AIzaSyDHuMCU3gL1ydavWDzV5YUvH_lbGGA62_U",
+	    authDomain: "projeto1-1d226.firebaseapp.com",
+	    databaseURL: "https://projeto1-1d226.firebaseio.com",
+	    projectId: "projeto1-1d226",
+	    storageBucket: "projeto1-1d226.appspot.com",
+	    messagingSenderId: "789029467931"
 		};
 		firebase.initializeApp(config);
 	}

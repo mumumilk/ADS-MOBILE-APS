@@ -1,5 +1,6 @@
 import { Documentos } from './../pages/documentos/documentos';
 import { Atividades } from './../pages/atividades/atividades';
+import { Login } from './../pages/login/login';
 import { FirebaseProvider } from './../providers/firebase-provider';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -8,14 +9,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+
+import { Menu } from '../pages/menu/menu';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     Documentos,
-    Atividades
+    Atividades,
+    Menu
   ],
   imports: [
     BrowserModule,
@@ -24,9 +27,9 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     Documentos,
-    Atividades
+    Atividades,
+    Menu
   ],
   providers: [
     StatusBar,
