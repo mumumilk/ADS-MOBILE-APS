@@ -1,6 +1,3 @@
-import { Documentos } from './../pages/documentos/documentos';
-import { Atividades } from './../pages/atividades/atividades';
-import { Login } from './../pages/login/login';
 import { FirebaseProvider } from './../providers/firebase-provider';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -17,8 +14,6 @@ import { Menu } from '../pages/menu/menu';
 @NgModule({
   declarations: [
     MyApp,
-    Documentos,
-    Atividades,
     Menu
   ],
   imports: [
@@ -28,8 +23,6 @@ import { Menu } from '../pages/menu/menu';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Documentos,
-    Atividades,
     Menu
   ],
   providers: [

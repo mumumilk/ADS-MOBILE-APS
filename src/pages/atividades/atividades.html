@@ -1,19 +1,15 @@
 <ion-header>
-  <ion-navbar color="navbar">
-    <ion-buttons left>
-        <button ion-button icon-only menuToggle >
-            <ion-icon name="menu"></ion-icon>
-        </button>
-    </ion-buttons>
-    <ion-title>Atividades</ion-title>
 
+  <ion-navbar>
+    <ion-title>Atividades</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let atividade of atividades"> 
+    <ion-item *ngFor="let atividade of atividades">
       {{ atividade.descricao }}
     </ion-item>
   </ion-list>

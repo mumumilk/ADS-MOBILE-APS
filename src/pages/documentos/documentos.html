@@ -1,15 +1,16 @@
 <ion-header>
-  <ion-navbar color="navbar">
-    <ion-buttons left>
-        <button ion-button icon-only menuToggle >
-            <ion-icon name="menu"></ion-icon>
-        </button>
-    </ion-buttons>
-    <ion-title>Documentos</ion-title>
 
+  <ion-navbar>
+    <ion-title>Documentos</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
 
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let documento of documentos">
+      {{ documento.nome }}
+    </ion-item>
+  </ion-list>
 </ion-content>
