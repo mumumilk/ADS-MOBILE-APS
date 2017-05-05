@@ -1,26 +1,27 @@
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
 
-</ion-header>
-
-<ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label floating>E-mail</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Senha</ion-label>
-      <ion-input type="password" [(ngModel)]="senha"></ion-input>
-    </ion-item>
-  </ion-list>
-  <button ion-button block (click)="login()">
-    Login
-  </button>
-  <button ion-button block (click)="registrar()">
-    Cadastrar
-  </button>
+<ion-content padding class="grad">
+  <div class="max center">
+    <ion-list>
+      <ion-item class="transparent center">
+          <img src="assets/img/logo.png" id="logo" >
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item style="border-radius: 5px 5px 0 0; margin-bottom: -16px">
+        <ion-input type="email" placeholder="E-mail" [(ngModel)]="email"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item style="border-radius: 0 0 5px 5px; margin-top: -16px">
+        <ion-input type="password" placeholder="Senha" [(ngModel)]="senha"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button block outline color="light" (click)="login()">
+      Login
+    </button>
+    <button ion-button block (click)="registrar()">
+      Cadastrar
+    </button>
+  </div>
 </ion-content>
