@@ -12,4 +12,7 @@ export class Disciplinas {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  abrirDisciplina(){
+    this.navCtrl.push('Disciplina');
+  }
 }
