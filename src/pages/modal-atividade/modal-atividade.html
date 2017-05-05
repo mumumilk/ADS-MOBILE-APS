@@ -15,12 +15,16 @@
 <ion-content padding>
   <ion-list>
   <ion-item>
+    <ion-label floating>Descrição</ion-label>
+    <ion-input [(ngModel)]="descricao"></ion-input>
+  </ion-item>
+  <ion-item>
     <ion-label>Data de entrega:</ion-label>
     <ion-datetime format="dd/mm/yyyy" [(ngModel)]="data"></ion-datetime>
   </ion-item>
   <ion-item>
-    <ion-label floating>Descrição</ion-label>
-    <ion-input [(ngModel)]="descricao"></ion-input>
+    <ion-label>Entregue</ion-label>
+    <ion-checkbox [(ngModel)]="entregue"></ion-checkbox>
   </ion-item>
   </ion-list>
   <button ion-button block color="secondary" (click)="salvar()">

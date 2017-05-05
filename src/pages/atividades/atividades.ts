@@ -14,7 +14,6 @@ export class Atividades {
   public idDisciplina: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
-    this.nomeDisciplina = 'asdsa';  
   }
 
   ionViewDidLoad() {
@@ -30,7 +29,7 @@ export class Atividades {
     let modal = this.modalCtrl.create('ModalAtividade');
 
     modal.onDidDismiss(dados => {
-      if (dados.salvar)
+      if (dados && dados.salvar)
         this.cadastrarAtividade(dados);
     });
 

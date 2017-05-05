@@ -1,6 +1,6 @@
 import { Documento } from './../../models/Documento';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -12,7 +12,7 @@ export class Documentos {
   public documentos: Array<Documento> = new Array<Documento>(); 
   public nomeDisciplina: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -23,6 +23,19 @@ export class Documentos {
 
   fechar() {
     this.navCtrl.push('Disciplinas');
+  }
+
+  abrirModalDocumento() {
+    let modalDocumento = this.modalCtrl.create('ModalDocumento');
+
+    modalDocumento.onDidDismiss(dados => {
+      if (dados && dados.salvar) {
+        let novoDocumento = new Documento(dados.nome, dados.data, dados.responsavel, dados.local, dados.entregue);
+        this.documentos.push(novoDocumento);
+      }
+    });
+
+    modalDocumento.present();
   }
 
 }
