@@ -15,10 +15,10 @@
   <p *ngIf="usuario">Olá, {{ usuario.email }}!</p>
   <ion-list>
     <ion-item *ngFor="let disciplina of disciplinas">
-    <button ion-button (click)="abrirModalDisciplina(disciplina)">
-      {{ disciplina.nome }}
-    </button>
+    <ion-card ion-button (click)="abrirDisciplina(disciplina)">
+      <ion-card-header>{{ disciplina.nome }}</ion-card-header>
+    </ion-card>
     </ion-item>
   </ion-list>
-  <button ion-button block (click)="abrirModalNovaDisciplina()">Nova disciplina</button>
+  <button ion-button block (click)="novaDisciplina()">Nova disciplina</button>
 </ion-content>

@@ -1,5 +1,5 @@
 <!--
-  Generated template for the ModalDisciplina page.
+  Generated template for the Disciplina page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ModalDisciplina</ion-title>
+    <ion-title>Disciplina</ion-title>
     <ion-buttons end>
     <button ion-button icon-only (click)="fechar()">
       <ion-icon name="close"></ion-icon>
@@ -15,10 +15,12 @@
     </ion-buttons>
   </ion-navbar>
 
-
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-tabs selectedIndex="1"> 
+    <ion-tab [root]="tab1Root">Documentos</ion-tab>
+    <ion-tab [root]="tab2Root">Atividades</ion-tab>
+  </ion-tabs>
 </ion-content>

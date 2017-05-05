@@ -1,5 +1,5 @@
-import { ModalDisciplina } from './../pages/modal-disciplina/modal-disciplina';
-import { Login } from './../pages/login/login';
+import { Documentos } from './../pages/documentos/documentos';
+import { Atividades } from './../pages/atividades/atividades';
 import { FirebaseProvider } from './../providers/firebase-provider';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -14,7 +14,8 @@ import { HomePage } from '../pages/home/home';
   declarations: [
     MyApp,
     HomePage,
-    ModalDisciplina
+    Documentos,
+    Atividades
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,8 @@ import { HomePage } from '../pages/home/home';
   entryComponents: [
     MyApp,
     HomePage,
-    ModalDisciplina
+    Documentos,
+    Atividades
   ],
   providers: [
     StatusBar,
