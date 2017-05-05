@@ -12,5 +12,44 @@
 
 
 <ion-content padding style="background-color: #F8F6FB">
-<p>aqui vai ter o progresso do cara</p>
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        Disciplinas Cadastradas
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #lineCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          Documentos e Atividades
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #doughnutCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+          <ion-card-header>
+              Conclusão de Atividades
+          </ion-card-header>
+          <ion-card-content>
+              <ion-list>
+                  <ion-item *ngFor="let d of disciplinas">
+                      <p>{{d.nome}}</p>
+                      <div class="progress-outer">
+                        <div class="progress-inner" [style.width]="d.pg + '%'">
+                            {{d.pg}}%
+                        </div>
+                    </div>
+                  </ion-item>
+              </ion-list>
+          </ion-card-content>
+      </ion-card>
+
+
+
+  </ion-content>
 </ion-content>
