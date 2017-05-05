@@ -1,6 +1,6 @@
 import { Documento } from './../../models/Documento';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -15,7 +15,14 @@ export class Documentos {
   }
 
   ionViewDidLoad() {
-    this.documentos = this.navParams.data;
+    let params = this.navParams.data;
+    
+    if (params)
+      this.documentos = params;
+  }
+
+  fechar() {
+    this.navCtrl.push('Disciplinas');
   }
 
 }

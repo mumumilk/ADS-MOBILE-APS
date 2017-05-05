@@ -10,12 +10,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class Atividades {
 
   public atividades: Array<Atividade> = new Array<Atividade>();
+  public nomeDisciplina: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.nomeDisciplina = 'asdsa';  
   }
 
   ionViewDidLoad() {
-    this.atividades = this.navParams.data;    
+    let params = this.navParams.data;
+
+    if (params) {
+      this.atividades = this.navParams.data;
+      try {
+        this.nomeDisciplina = this.atividades[0].nomeDisciplina;
+      } catch(e) { console.log('rato') }    
+    }
   }
 
 }

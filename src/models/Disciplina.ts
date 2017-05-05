@@ -9,7 +9,7 @@ export class Disciplina {
     public constructor(nome: string) {
         
         if (nome && nome.length < 4) 
-            throw new Error('O nome da disciplina deve possuir no mínimo 3 caracteres!');
+            throw new Error('O nome da disciplina deve possuir no mínimo 4 caracteres!');
         
         this.nome = nome;
         this.atividades = new Array<Atividade>();

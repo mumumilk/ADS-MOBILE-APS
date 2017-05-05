@@ -1,5 +1,3 @@
-import { Documento } from './../../models/Documento';
-import { Atividade } from './../../models/Atividade';
 import { Disciplina } from './../../models/Disciplina';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
@@ -49,19 +47,20 @@ export class Disciplinas {
   criarDisciplina(nomeDisciplina: string) {
     try {
       let novaDisciplina = new Disciplina(nomeDisciplina);
-      let testeAtividades = new Array<Atividade>();
-      let testeDocumentos = new Array<Documento>();
+      
+      // let testeAtividades = new Array<Atividade>();
+      // let testeDocumentos = new Array<Documento>();
 
-      testeAtividades.push(new Atividade('aaa', 'descricao 1', false));
-      testeAtividades.push(new Atividade('bbb', 'descricao 2', true));
-      testeAtividades.push(new Atividade('cca', 'descricao 3', false));
+      // testeAtividades.push(new Atividade('aaa', 'descricao 1', false, novaDisciplina.nome));
+      // testeAtividades.push(new Atividade('bbb', 'descricao 2', true, novaDisciplina.nome));
+      // testeAtividades.push(new Atividade('cca', 'descricao 3', false, novaDisciplina.nome));
 
-      testeDocumentos.push(new Documento('Doc1', 'asdasd', 'Gabre', false));
-      testeDocumentos.push(new Documento('Doc2', 'ddd', 'samuka', true));
-      testeDocumentos.push(new Documento('Doc3', 'sadasd', 'rico', false));
+      // testeDocumentos.push(new Documento('Doc1', 'asdasd', 'Gabre', false));
+      // testeDocumentos.push(new Documento('Doc2', 'ddd', 'samuka', true));
+      // testeDocumentos.push(new Documento('Doc3', 'sadasd', 'rico', false));
 
-      novaDisciplina.atividades = testeAtividades;
-      novaDisciplina.documentos = testeDocumentos;
+      // novaDisciplina.atividades = testeAtividades;
+      // novaDisciplina.documentos = testeDocumentos;
 
       this.disciplinas.push(novaDisciplina);
     } catch (e) {

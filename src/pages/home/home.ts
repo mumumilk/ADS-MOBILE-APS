@@ -47,8 +47,8 @@ export class HomePage {
   }
 
   adicionarDisciplina(descricao: string) {
-    let novaDisciplina = new Disciplina(descricao);
-    this.disciplinas.push(novaDisciplina);
+    // let novaDisciplina = new Disciplina(descricao);
+    // this.disciplinas.push(novaDisciplina);
   }
 
 }
