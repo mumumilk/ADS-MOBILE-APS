@@ -1,12 +1,6 @@
+import { Documento } from './../../models/Documento';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the Documentos page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-documentos',
@@ -14,7 +8,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Documentos {
 
+  public documentos: Array<Documento> = new Array<Documento>();
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.documentos = this.navParams.get('documentos');
   }
 
 

@@ -1,4 +1,11 @@
 <ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Atividades" tabIcon="lock"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Documentos" tabIcon="clipboard"></ion-tab>
+  <ion-tab [root]="tabAtividades" 
+    [rootParams]="atividades" 
+    tabTitle="Atividades" 
+    tabIcon="lock"></ion-tab>
+  
+  <ion-tab [root]="tabDocumentos" 
+    [rootParams]="documentos" 
+    tabTitle="Documentos" 
+    tabIcon="clipboard"></ion-tab>
 </ion-tabs>

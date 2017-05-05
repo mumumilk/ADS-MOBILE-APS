@@ -12,10 +12,13 @@
 
 
 <ion-content padding style="background-color: #F8F6FB">
-<p>aqui vai ter a lista de disciplinas</p>
-<p>clica no botao ai seu arrombado</p>
+  <ion-list>
+    <ion-item *ngFor="let disciplina of disciplinas" (click)="abrirDisciplina(disciplina)"> 
+      {{ disciplina.nome }}
+    </ion-item>
+  </ion-list>
 </ion-content>
 
 <ion-fab right bottom padding>
-  <button ion-fab icon-only (click)="abrirDisciplina()" ><ion-icon name="add"></ion-icon></button>
+  <button ion-fab icon-only (click)="abrirAlertDisciplina()" ><ion-icon name="add"></ion-icon></button>
 </ion-fab>
