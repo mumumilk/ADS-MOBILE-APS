@@ -29,8 +29,29 @@ export class Atividades {
     let modal = this.modalCtrl.create('ModalAtividade');
 
     modal.onDidDismiss(dados => {
-      if (dados && dados.salvar)
+      if (dados && dados.salvar) 
         this.cadastrarAtividade(dados);
+      
+      else if (dados && dados.editar) 
+        this.alterarAtividade(dados);
+    });
+
+    modal.present();
+  }
+
+  abrirAtividade(atividade: Atividade) {
+    let modal = this.modalCtrl.create('ModalAtividade', {
+      editando: true,
+      atividade: atividade,
+      indice: this.atividades.indexOf(atividade)
+    });
+
+    modal.onDidDismiss(dados => {
+      if (dados && dados.excluir)
+        this.excluirAtividade(dados);
+      
+      else if (dados && dados.editar) 
+        this.alterarAtividade(dados);
     });
 
     modal.present();
@@ -41,8 +62,16 @@ export class Atividades {
     this.atividades.push(atividade);
   }
 
-  entregarAtividade(atividade: Atividade) {
-    //persistir no banco
+  alterarAtividade(dados: any) {
+    let atividade = this.atividades[dados.indice];
+
+    atividade.data = dados.data;
+    atividade.descricao = dados.descricao;
+    atividade.entregue = dados.entregue;
+  }
+
+  excluirAtividade(dados: any) {
+    this.atividades.splice(dados.indice, 1);
   }
 
 }

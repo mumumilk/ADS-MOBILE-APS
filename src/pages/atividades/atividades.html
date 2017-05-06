@@ -17,7 +17,7 @@
 </ion-header>
 <ion-content padding>
   <ion-list>
-  <ion-item *ngFor="let atividade of atividades">
+  <ion-item *ngFor="let atividade of atividades" (click)="abrirAtividade(atividade)">
     {{ atividade.descricao }}
   </ion-item>
   </ion-list>

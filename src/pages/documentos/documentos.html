@@ -17,7 +17,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let documento of documentos">
+    <ion-item *ngFor="let documento of documentos" (click)="abrirDocumento(documento)">
       {{ documento.nome }}
     </ion-item>
   </ion-list>

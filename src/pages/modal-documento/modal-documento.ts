@@ -1,3 +1,4 @@
+import { Documento } from './../../models/Documento';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 
@@ -13,12 +14,32 @@ export class ModalDocumento {
   public responsavel: string;
   public local: string;
   public entregue: boolean;
+  public indice: number;
+  public salvando: boolean = false;
+  public editando: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public view: ViewController, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ModalDocumento');
+    let editar = this.navParams.get('editar');
+
+    if (editar) {
+      let indice = this.navParams.get('indice');
+      let documento = this.navParams.get('documento') as Documento;
+
+      this.indice = indice;
+      this.nome = documento.nome;
+      this.data = documento.data;
+      this.responsavel = documento.responsavel;
+      this.entregue = documento.entregue;
+      this.local = documento.local;
+      this.editando = true;
+      this.salvando = false;
+    } else {
+      this.salvando = true;
+      this.editando = false;
+    }
   }
 
   fechar() {
@@ -32,7 +53,10 @@ export class ModalDocumento {
       responsavel: this.responsavel,
       local: this.local,
       entregue: this.entregue,
-      salvar: true
+      indice: this.indice,
+      salvar: true,
+      editar: false,
+      excluir: false
     };
 
     let documentoEhValido = this.documentoEhValido(dadosDocumento);
@@ -41,7 +65,7 @@ export class ModalDocumento {
       this.view.dismiss(dadosDocumento);
   }
 
-  documentoEhValido(dados: { nome: string, data: any, responsavel: string, local: string }): boolean {
+  documentoEhValido(dados: any): boolean {
     if (!dados.nome || dados.nome.length === 0) {
       this.mostrarErro('O campo nome não pode estar vazio!');
       return false;
@@ -69,6 +93,34 @@ export class ModalDocumento {
     });
 
     alertError.present();
+  }
+
+  editar() {
+    let dadosDocumento = {
+      nome: this.nome,
+      data: this.data,
+      responsavel: this.responsavel,
+      local: this.local,
+      entregue: this.entregue,
+      indice: this.indice,
+      salvar: false,
+      excluir: false,
+      editar: true
+    };
+
+    if (this.documentoEhValido(dadosDocumento))
+      this.view.dismiss(dadosDocumento);
+  }
+
+  excluir() {
+    let dadosDocumento = {
+      indice: this.indice,
+      excluir: true,
+      editar: false,
+      salvar: false
+    }
+
+    this.view.dismiss(dadosDocumento);
   }
 
 }

@@ -27,7 +27,16 @@
     <ion-checkbox [(ngModel)]="entregue"></ion-checkbox>
   </ion-item>
   </ion-list>
-  <button ion-button block color="secondary" (click)="salvar()">
+  <button ion-button block color="secondary" 
+  (click)="salvar()" *ngIf="salvando">
     Salvar
+  </button>
+  <button ion-button block color="secondary" 
+    (click)="editar()" *ngIf="editando">
+      Editar
+  </button>
+  <button ion-button block color="danger" 
+    (click)="excluir()" *ngIf="editando">
+      Excluir
   </button>
 </ion-content>

@@ -38,4 +38,31 @@ export class Documentos {
     modalDocumento.present();
   }
 
+  abrirDocumento(documento: Documento) {
+    let indiceDocumento = this.documentos.indexOf(documento);
+    let modalDocumento = this.modalCtrl.create('ModalDocumento', {
+      editar: true,
+      documento: documento,
+      indice: indiceDocumento
+    });
+
+    modalDocumento.onDidDismiss(dados => {
+      if (dados && dados.editar) {
+        let documentoParaModificar = this.documentos[dados.indice];
+
+        documentoParaModificar.data = dados.data;
+        documentoParaModificar.entregue = dados.entregue;
+        documentoParaModificar.local = dados.local;
+        documentoParaModificar.responsavel = dados.responsavel;
+        documentoParaModificar.nome = dados.nome;
+      } 
+      else if (dados && dados.excluir) {
+        let teste = 'asdasdds';
+        this.documentos.splice(indiceDocumento, 1);
+      }
+    });
+
+    modalDocumento.present();
+  }
+
 }
