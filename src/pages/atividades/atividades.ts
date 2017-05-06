@@ -1,6 +1,7 @@
 import { Atividade } from './../../models/Atividade';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { FirebaseProvider } from '../../providers/firebase-provider';
 
 @IonicPage()
 @Component({
@@ -12,8 +13,12 @@ export class Atividades {
   public atividades: Array<Atividade> = new Array<Atividade>();
   public nomeDisciplina: string;
   public idDisciplina: any;
+  public usuario: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public firebase: FirebaseProvider) {
+    this.usuario = this.firebase.auth().currentUser;
+    this.atividades = new Array<Atividade>();
+    this.abrirDisciplinas();
   }
 
   ionViewDidLoad() {
@@ -21,8 +26,15 @@ export class Atividades {
 
     if (params) {
       this.atividades = this.navParams.data.atividades;
-      this.nomeDisciplina = params.nomeDisciplina;   
+      this.nomeDisciplina = params.nomeDisciplina;
     }
+  }
+
+  abrirDisciplinas(){
+    let caminho = this.usuario.uid + '/disciplinas/' + this.nomeDisciplina + '/atividades/';
+    this.firebase.database().ref(caminho).on('child_added', (snapshot) => {
+      this.atividades.push(snapshot.val());
+    });
   }
 
   abrirModalAtividade() {
@@ -59,7 +71,10 @@ export class Atividades {
 
   cadastrarAtividade(dados: any) {
     let atividade: Atividade = new Atividade(dados.data, dados.descricao, false);
+    debugger;
     this.atividades.push(atividade);
+    let caminho = this.usuario.uid + '/disciplinas/' + this.nomeDisciplina + '/atividades/' + atividade.descricao;
+    this.firebase.database().ref(caminho).set(atividade);
   }
 
   alterarAtividade(dados: any) {

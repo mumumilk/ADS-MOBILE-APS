@@ -1,6 +1,7 @@
 import { Disciplina } from './../../models/Disciplina';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { FirebaseProvider } from '../../providers/firebase-provider';
 
 
 @IonicPage()
@@ -9,11 +10,18 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
   templateUrl: 'disciplinas.html',
 })
 export class Disciplinas {
-
+  public usuario;
   public disciplinas: Array<Disciplina>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public firebase: FirebaseProvider) {
     this.disciplinas = new Array<Disciplina>();
+    this.usuario = firebase.auth().currentUser;
+    try{
+      this.checaDisciplinas();
+    }
+    catch(e){
+      
+    }
   }
 
   abrirDisciplina(disciplina: Disciplina) {
@@ -44,6 +52,14 @@ export class Disciplinas {
     alertDisciplina.present();
   }
 
+  checaDisciplinas(){
+    let caminho = this.usuario.uid + '/disciplinas';
+    debugger;
+    this.firebase.database().ref(caminho).on('child_added', (snapshot) => {
+      this.disciplinas.push(snapshot.val());
+    });
+  }
+
   criarDisciplina(nomeDisciplina: string) {
     try {
       let novaDisciplina = new Disciplina(nomeDisciplina);
@@ -63,6 +79,10 @@ export class Disciplinas {
       // novaDisciplina.documentos = testeDocumentos;
 
       this.disciplinas.push(novaDisciplina);
+      this.checaDisciplinas();
+      let caminho = this.usuario.uid + '/disciplinas/' + novaDisciplina.nome;
+
+      this.firebase.database().ref(caminho).set(novaDisciplina);
     } catch (e) {
       let erro = e as Error;
       let alertErro = this.alertCtrl.create({
@@ -73,7 +93,7 @@ export class Disciplinas {
           role: 'cancel'
         }]
       });
-      
+
       alertErro.present();
     }
   }
