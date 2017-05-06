@@ -1,3 +1,4 @@
+import { Disciplina } from './../../models/Disciplina';
 import { Atividade } from './../../models/Atividade';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
@@ -12,20 +13,21 @@ export class Atividades {
 
   public atividades: Array<Atividade> = new Array<Atividade>();
   public nomeDisciplina: string;
-  public idDisciplina: any;
+  public indiceDisciplina: number;
   public usuario: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public firebase: FirebaseProvider) {
     this.usuario = this.firebase.auth().currentUser;
     this.atividades = new Array<Atividade>();
+    this.indiceDisciplina = this.navParams.get('indiceDisciplina');
     this.abrirDisciplinas();
   }
 
   ionViewDidLoad() {
-    let params = this.navParams.data as { atividades, nomeDisciplina };
+    let params = this.navParams.data;
 
     if (params) {
-      this.atividades = this.navParams.data.atividades;
+      this.atividades = this.navParams.get('disciplina').atividades;
       this.nomeDisciplina = params.nomeDisciplina;
     }
   }
@@ -71,9 +73,19 @@ export class Atividades {
 
   cadastrarAtividade(dados: any) {
     let atividade: Atividade = new Atividade(dados.data, dados.descricao, false);
-    debugger;
+    
     this.atividades.push(atividade);
-    let caminho = this.usuario.uid + '/disciplinas/' + this.nomeDisciplina + '/atividades/' + atividade.descricao;
+
+    let caminhoDisc = this.usuario.uid + '/disciplinas';
+    
+    let disciplinas = new Array<Disciplina>(); 
+
+    this.firebase.database().ref(caminhoDisc).on('child_added', (snapshot) => {
+      disciplinas.push(snapshot.val());
+    });
+
+    let caminho = this.usuario.uid + '/disciplinas/' + disciplinas[this.indiceDisciplina].nome + '/atividades/';
+    
     this.firebase.database().ref(caminho).set(atividade);
   }
 

@@ -5,6 +5,11 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="abrirAlertDisciplina()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Disciplinas</ion-title>
 
   </ion-navbar>
@@ -18,7 +23,3 @@
     </ion-item>
   </ion-list>
 </ion-content>
-
-<ion-fab right bottom padding>
-  <button ion-fab icon-only (click)="abrirAlertDisciplina()" ><ion-icon name="add"></ion-icon></button>
-</ion-fab>

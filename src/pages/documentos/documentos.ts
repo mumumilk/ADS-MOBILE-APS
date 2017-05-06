@@ -57,7 +57,6 @@ export class Documentos {
         documentoParaModificar.nome = dados.nome;
       } 
       else if (dados && dados.excluir) {
-        let teste = 'asdasdds';
         this.documentos.splice(indiceDocumento, 1);
       }
     });
